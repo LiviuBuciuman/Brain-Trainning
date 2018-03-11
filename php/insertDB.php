@@ -1,4 +1,5 @@
 <?php
+
 require_once "dbConfig.php";
 
 $username = $_POST["nombreReg"];
