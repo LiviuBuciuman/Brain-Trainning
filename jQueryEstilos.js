@@ -32,8 +32,7 @@ $(function () {
     $('#openReg').on('click', function () {
 
         $.ajax({
-            url: 'dbSelect.php',
-            type: 'POST',
+            url: './php/dbSelect.php',
             dataType: 'json',
             contentType: 'application/json',
             success: function (response) {

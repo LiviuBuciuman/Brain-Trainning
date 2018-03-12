@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url: 'insertDB.php',
+        url: '',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
