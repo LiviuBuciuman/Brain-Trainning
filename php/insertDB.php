@@ -11,9 +11,9 @@ $pais = $_POST["paisReg"];
 $ciudad = $_POST["poblacionReg"];
 
 $sql = "INSERT INTO usuario 
-    (username, pass, rol, email, fechaNacimiento, pais, ciudad)
+    (username, contrasena, rol, email, fechaNacimiento, idCiudad)
     VALUES 
-    ('$username', '$password', '$rol', '$email', '$nacimiento', '$pais', '$ciudad')";
+    ('$username', '$password', '$rol', '$email', '$nacimiento', '$idCiudad')";
 
 if ($conn->query($sql) === true) {
     echo "New record created successfully";

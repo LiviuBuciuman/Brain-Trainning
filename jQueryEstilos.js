@@ -30,7 +30,33 @@ $(function () {
     });
 
     $('#openReg').on('click', function () {
-        $('#dialogReg').dialog('open');
+
+        $.ajax({
+            url: 'dbSelect.php',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (response) {
+                //rellenar los country
+
+
+
+
+                $('#dialogReg').dialog('open');
+            },
+            error: function (request, errorType, errorMessage) {
+                alert('Error' + errorType + 'Mensaje: ' + errorMessage);
+            }
+        });
+
+
+
+
+
+
+
+
+
     });
 
 });
