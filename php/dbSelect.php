@@ -1,22 +1,21 @@
 <?php
-require_once "dbConfig.php";
+header("Content-Type: application/json");
+include_once "dbConfig.php";
 
-$sql = "SELECT * FROM country";
-$result = $conn->query($sql);
+function listado()
+{
+    global $enlace;
+    mysqli_set_charset($enlace, 'utf8');
 
-$array = [];
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
-        $array[] = $row;
+    $result = mysqli_query($enlace, "SELECT * FROM country");
+    $lista = [];
+    while ($fila = mysqli_fetch_array($result)) {
+        $lista[] = $fila;
     }
-} else {
-    echo "0 results";
+    return $lista;
 }
 
-echo json_encode($array, JSON_UNESCAPED_UNICODE);
-
-$conn->close();
+$resultado = listado();
+echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
 
 ?>

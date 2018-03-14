@@ -1,14 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "braintrainning";
+global $enlace;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$enlace = mysqli_connect('localhost', 'root', '', 'braintrainning');
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$enlace) {
+    echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
+    echo "errno de depuración: " . mysqli_connect_error() . PHP_EOL;
+    echo "errno de depuración: " . mysqli_connect_error() . PHP_EOL;
+    exit;
 }
-echo "Connected successfully";
+?>

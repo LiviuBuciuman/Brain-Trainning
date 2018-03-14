@@ -41,7 +41,7 @@ var paises = function () {
     $.ajax({
         url: './php/dbSelect.php',
         dataType: 'json',
-        contentType: 'application/json',
+        contentType: 'application/json; charset=utf-8',
         success: function (response) {
             var array = response;
             for (var i = 0; i < array.length; i++) {
