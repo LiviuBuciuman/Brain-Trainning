@@ -30,32 +30,27 @@ $(function () {
     });
 
     $('#openReg').on('click', function () {
-
-        $.ajax({
-            url: './php/dbSelect.php',
-            dataType: 'json',
-            contentType: 'application/json',
-            success: function (response) {
-                //rellenar los country
-
-
-
-
-                $('#dialogReg').dialog('open');
-            },
-            error: function (request, errorType, errorMessage) {
-                alert('Error' + errorType + 'Mensaje: ' + errorMessage);
-            }
-        });
-
-
-
-
-
-
-
-
+        $('#dialogReg').dialog('open');
+        paises();
 
     });
 
 });
+
+var paises = function () {
+    $.ajax({
+        url: './php/dbSelect.php',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (response) {
+            var array = response;
+            for (var i = 0; i < array.length; i++) {
+                var code = "<option value='" + array[i].Code + "'>" + array[i].Name + "</option>";
+                $('#paisReg').append(code);
+            }
+        },
+        error: function (request, errorType, errorMessage) {
+            alert('Error' + errorType + 'Mensaje: ' + errorMessage);
+        }
+    });
+};
