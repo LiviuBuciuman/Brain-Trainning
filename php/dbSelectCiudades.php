@@ -2,12 +2,14 @@
 header("Content-Type: application/json");
 include_once "dbConfig.php";
 
-function listado()
+$code = $_GET["codigoPais"];
+function listaCiudades($code)
 {
+
     global $enlace;
     mysqli_set_charset($enlace, 'utf8');
 
-    $result = mysqli_query($enlace, "SELECT * FROM country");
+    $result = mysqli_query($enlace, "SELECT Name FROM city WHERE CountryCode = '$code' ORDER BY name ASC ");
     $lista = [];
     while ($fila = mysqli_fetch_array($result)) {
         $lista[] = $fila;
@@ -15,7 +17,5 @@ function listado()
     return $lista;
 }
 
-$resultado = listado();
+$resultado = listaCiudades($code);
 echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
-
-?>

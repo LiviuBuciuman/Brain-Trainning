@@ -32,14 +32,17 @@ $(function () {
     $('#openReg').on('click', function () {
         $('#dialogReg').dialog('open');
         paises();
-
     });
 
+    $('#paisReg').change(function () {
+        var codePais = $('#paisReg').val();
+        ciudades(codePais);
+    });
 });
 
 var paises = function () {
     $.ajax({
-        url: './php/dbSelect.php',
+        url: './php/dbSelectPaises.php',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
@@ -52,5 +55,26 @@ var paises = function () {
         error: function (request, errorType, errorMessage) {
             alert('Error' + errorType + 'Mensaje: ' + errorMessage);
         }
-    });
+    })
 };
+
+var ciudades = function (codePais) {
+    $.ajax({
+        url: './php/dbSelectCiudades.php',
+        dataType: 'json',
+        // contentType: 'application/json; charset=utf-8',
+        data: {"codigoPais": codePais},
+        success: function (response) {
+            $('#poblacionReg').text("");
+            var array = response;
+            for (var i = 0; i < array.length; i++) {
+                var idCiudad = "<option value='" + array[i].ID + "'>" + array[i].Name + "</option>";
+                $('#poblacionReg').append(idCiudad);
+            }
+        },
+        error: function (request, errorType, errorMessage) {
+            alert('Error' + errorType + 'Mensaje: ' + errorMessage);
+        }
+    })
+};
+
