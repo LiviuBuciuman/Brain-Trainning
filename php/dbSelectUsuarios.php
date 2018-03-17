@@ -2,14 +2,17 @@
 header("Content-Type: application/json");
 include_once "dbConfig.php";
 
-$code = $_GET["codigoPais"];
-function listaCiudades($code)
+$nombreLog = $_GET["nombreLog"];
+$passwordLog = $_GET["passwordLog"];
+
+function listaUsuarios($nombreLog, $passwordLog)
 {
 
     global $enlace;
     mysqli_set_charset($enlace, 'utf8');
 
-    $result = mysqli_query($enlace, "SELECT  FROM usuario WHERE CountryCode = '$code' ORDER BY name ASC ");
+    $result = mysqli_query($enlace,
+        "SELECT username, contrasena FROM usuario WHERE username = '$nombreLog' AND contrasena = '$passwordLog'");
     $lista = [];
     while ($fila = mysqli_fetch_array($result)) {
         $lista[] = $fila;
@@ -17,5 +20,5 @@ function listaCiudades($code)
     return $lista;
 }
 
-$resultado = listaCiudades($code);
+$resultado = listaUsuarios($nombreLog, $passwordLog);
 echo json_encode($resultado, JSON_UNESCAPED_UNICODE);

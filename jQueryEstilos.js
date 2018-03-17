@@ -1,4 +1,5 @@
 $(function () {
+
     $('#dialogLogin').dialog({
         autoOpen: false,
         show: {
@@ -25,11 +26,11 @@ $(function () {
         modal: true
     });
 
-    $('#openLogin').on('click', function () {
+    $('#openLogin').click(function () {
         $('#dialogLogin').dialog('open');
     });
 
-    $('#openReg').on('click', function () {
+    $('#openReg').click(function () {
         $('#dialogReg').dialog('open');
         paises();
     });
@@ -38,6 +39,37 @@ $(function () {
         var codePais = $('#paisReg').val();
         ciudades(codePais);
     });
+
+    $('#loginLog').click(function () {
+
+        var nombreLog = $('#nombreLog').val();
+        var passwordLog = $('#passwordLog').val();
+
+        if ($.trim(nombreLog).length > 0 && $.trim(passwordLog).length > 0) {
+            $.ajax({
+                url: './php/dbSelectUsuarios.php',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: {nombreLog: nombreLog, passwordLog: passwordLog},
+                cache: 'false',
+                beforeSend: function () {
+                    $('#loginLog').val('Conectando...')
+                },
+                success: function (data) {
+                    $('#loginLog').val('Login');
+                    if (data.length > 0) {
+                        $(location).attr('href', 'home.html');
+                    } else {
+                        alert("Ups");
+                    }
+                },
+                error: function (request, errorType, errorMessage) {
+                    alert('Error' + errorType + 'Mensaje: ' + errorMessage);
+                }
+            });
+        }
+    });
+
 });
 
 var paises = function () {
@@ -77,20 +109,3 @@ var ciudades = function (codePais) {
         }
     })
 };
-
-var usuarios = function () {
-    $.ajax({
-        url: './php/dbSelectUsuarios.php',
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        data: {},
-        success: function (response) {
-
-        },
-        error: function (request, errorType, errorMessage) {
-            alert('Error' + errorType + 'Mensaje: ' + errorMessage);
-        }
-
-    })
-};
-

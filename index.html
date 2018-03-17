@@ -47,20 +47,24 @@
                     <button type="submit" id="openLogin" class="btn btn-primary anchoButton">Login</button>
                 </div>
                 <div id="dialogLogin" title="Login">
-                    <form action="" method="post">
+                    <form id="formLogin" method="post">
                         <div class="form-group">
                             <label for="nombreLog">Nombre: </label>
-                            <input type="text" class="form-control" name="nombreLog" id="nombreLog">
+                            <div class="shake">
+                                <input type="text" class="form-control" name="nombreLog" id="nombreLog" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="passwordLog">Contraseña: </label>
-                            <input type="password" class="form-control" name="passwordLog" id="passwordLog">
+                            <div class="shake">
+                                <input type="password" class="form-control" name="passwordLog" id="passwordLog" required>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary form-control">Login</button>
+                            <button type="submit" id="loginLog" class="btn btn-primary form-control">Login</button>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-secondary form-control">Cancel</button>
+                            <button type="submit" id="cancelLog" class="btn btn-secondary form-control">Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -114,7 +118,6 @@
         </div>
     </div>
 </div>
-
 </body>
 
 </html>
