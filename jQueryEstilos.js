@@ -59,13 +59,13 @@ var paises = function () {
 };
 
 var ciudades = function (codePais) {
+    $('#poblacionReg').text("");
     $.ajax({
         url: './php/dbSelectCiudades.php',
         dataType: 'json',
-        // contentType: 'application/json; charset=utf-8',
+        contentType: 'application/json; charset=utf-8',
         data: {"codigoPais": codePais},
         success: function (response) {
-            $('#poblacionReg').text("");
             var array = response;
             for (var i = 0; i < array.length; i++) {
                 var idCiudad = "<option value='" + array[i].ID + "'>" + array[i].Name + "</option>";
@@ -75,6 +75,22 @@ var ciudades = function (codePais) {
         error: function (request, errorType, errorMessage) {
             alert('Error' + errorType + 'Mensaje: ' + errorMessage);
         }
+    })
+};
+
+var usuarios = function () {
+    $.ajax({
+        url: './php/dbSelectUsuarios.php',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: {},
+        success: function (response) {
+
+        },
+        error: function (request, errorType, errorMessage) {
+            alert('Error' + errorType + 'Mensaje: ' + errorMessage);
+        }
+
     })
 };
 
