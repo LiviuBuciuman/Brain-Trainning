@@ -10,7 +10,13 @@ $(function () {
             effect: 'drop',
             duration: 1000
         },
-        modal: true
+        modal: true,
+        buttons: {
+            Cancel: function() {
+                $(this).dialog('close');
+            }
+        }
+
     });
 
     $('#dialogReg').dialog({
@@ -23,7 +29,12 @@ $(function () {
             effect: 'drop',
             duration: 1000
         },
-        modal: true
+        modal: true,
+        buttons: {
+            Cancel: function () {
+                $(this).dialog('close');
+            }
+        }
     });
 
     $('#openLogin').click(function () {
@@ -60,7 +71,9 @@ $(function () {
                     if (data.length > 0) {
                         $(location).attr('href', 'home.html');
                     } else {
-                        alert("Ups");
+                        $(document).click(function () {
+                            $('#div-nombreLog').effect('shake');
+                        })
                     }
                 },
                 error: function (request, errorType, errorMessage) {
@@ -96,7 +109,7 @@ var ciudades = function (codePais) {
         url: './php/dbSelectCiudades.php',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        data: {"codigoPais": codePais},
+        data: {codigoPais: codePais},
         success: function (response) {
             var array = response;
             for (var i = 0; i < array.length; i++) {
