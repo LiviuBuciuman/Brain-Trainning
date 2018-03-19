@@ -47,23 +47,20 @@
                     <button type="submit" id="openLogin" class="btn btn-primary anchoButton">Login</button>
                 </div>
                 <div id="dialogLogin" title="Login">
-                    <form id="formLogin" method="post">
+                    <div id="formLogin">
                         <div class="form-group">
                             <label for="nombreLog">Nombre: </label>
                             <div id="div-nombreLog">
-                                <input type="text" class="form-control" name="nombreLog" id="nombreLog" required>
+                                <input type="text" class="form-control" name="nombreLog" id="nombreLog">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="passwordLog">Contraseña: </label>
                             <div id="div-passwordLog">
-                                <input type="password" class="form-control" name="passwordLog" id="passwordLog" required>
+                                <input type="password" class="form-control" name="passwordLog" id="passwordLog">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" id="loginLog" class="btn btn-primary form-control">Login</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="col-6 text-left">
                     <button type="submit" id="openReg" class="btn btn-primary anchoButton">Registrar</button>
@@ -101,9 +98,6 @@
                             <select id="poblacionReg" class="form-control">
                                 <option selected>Selecciona una ciudad...</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="col-12 btn btn-warning">Guardar datos</button>
                         </div>
                     </form>
                 </div>

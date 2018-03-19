@@ -12,7 +12,10 @@ $(function () {
         },
         modal: true,
         buttons: {
-            Cancel: function() {
+            Login: function () {
+                login();
+            },
+            Salir: function () {
                 $(this).dialog('close');
             }
         }
@@ -31,7 +34,10 @@ $(function () {
         },
         modal: true,
         buttons: {
-            Cancel: function () {
+            "Guardar datos": function () {
+
+            },
+            Salir: function () {
                 $(this).dialog('close');
             }
         }
@@ -50,40 +56,47 @@ $(function () {
         var codePais = $('#paisReg').val();
         ciudades(codePais);
     });
-
-    $('#loginLog').click(function () {
-
-        var nombreLog = $('#nombreLog').val();
-        var passwordLog = $('#passwordLog').val();
-
-        if ($.trim(nombreLog).length > 0 && $.trim(passwordLog).length > 0) {
-            $.ajax({
-                url: './php/dbSelectUsuarios.php',
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: {nombreLog: nombreLog, passwordLog: passwordLog},
-                cache: 'false',
-                beforeSend: function () {
-                    $('#loginLog').val('Conectando...')
-                },
-                success: function (data) {
-                    $('#loginLog').val('Login');
-                    if (data.length > 0) {
-                        $(location).attr('href', 'home.html');
-                    } else {
-                        $(document).click(function () {
-                            $('#div-nombreLog').effect('shake');
-                        })
-                    }
-                },
-                error: function (request, errorType, errorMessage) {
-                    alert('Error' + errorType + 'Mensaje: ' + errorMessage);
-                }
-            });
-        }
-    });
-
 });
+
+var insertUsuario = function () {
+    var nombre = $('#nombreReg').val();
+    var pass = $('#passwordReg').val();
+    var email = $('#emailReg').val();
+    var nacimiento = $('#nacimientoReg').val();
+    var pais = $('#paisReg').val();
+    var ciudad = $('#poblacionReg').val();
+
+    $.ajax({
+
+    })
+};
+
+var login = function () {
+
+    var nombreLog = $('#nombreLog').val();
+    var passwordLog = $('#passwordLog').val();
+
+    if ($.trim(nombreLog).length > 0 && $.trim(passwordLog).length > 0) {
+        $.ajax({
+            url: './php/dbSelectUsuarios.php',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: {nombreLog: nombreLog, passwordLog: passwordLog},
+            success: function (data) {
+                if (data.length > 0) {
+                    $(location).attr('href', 'home.html');
+                } else {
+                    $('#dialogLogin').effect('shake', 500);
+                }
+            },
+            error: function (request, errorType, errorMessage) {
+                alert('Error' + errorType + 'Mensaje: ' + errorMessage);
+            }
+        });
+    } else {
+        $('#dialogLogin').effect('shake', 500);
+    }
+};
 
 var paises = function () {
     $.ajax({
