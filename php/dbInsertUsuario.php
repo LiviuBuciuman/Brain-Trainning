@@ -1,24 +1,31 @@
 <?php
-header("Content-Type: application/json");
-include_once "dbConfig.php";
 
-$nombreLog = $_GET["nombreLog"];
-$passwordLog = $_GET["passwordLog"];
+$nombre = $_GET["nombre"];
+$pass = $_GET["pass"];
+$email = $_GET["email"];
+$nacimiento = $_GET["nacimiento"];
+$ciudad = $_GET["ciudad"];
+$rol = "Usuario";
 
-function listaUsuarios($nombreLog, $passwordLog)
-{
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "braintrainning";
 
-    global $enlace;
-    mysqli_set_charset($enlace, 'utf8');
-
-    $result = mysqli_query($enlace,
-        "INSERT username, contrasena FROM usuario WHERE username = '$nombreLog' AND contrasena = '$passwordLog'");
-    $lista = [];
-    while ($fila = mysqli_fetch_array($result)) {
-        $lista[] = $fila;
-    }
-    return $lista;
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-$resultado = listaUsuarios($nombreLog, $passwordLog);
-echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+$sql = "INSERT INTO usuario (username, password, rol, email, fechaNacimiento, idCiudad)
+                VALUES ('$nombre', '$pass', '$rol', '$email', '$nacimiento', '$ciudad')";
+
+//if (mysqli_query($conn, $sql)) {
+//    echo "New record created successfully";
+//} else {
+//    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+//}
+
+mysqli_close($conn);

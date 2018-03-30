@@ -12,7 +12,7 @@ function listaUsuarios($nombreLog, $passwordLog)
     mysqli_set_charset($enlace, 'utf8');
 
     $result = mysqli_query($enlace,
-        "SELECT username, contrasena FROM usuario WHERE username = '$nombreLog' AND contrasena = '$passwordLog'");
+        "SELECT username, password FROM usuario WHERE username = '$nombreLog' AND password = '$passwordLog'");
     $lista = [];
     while ($fila = mysqli_fetch_array($result)) {
         $lista[] = $fila;

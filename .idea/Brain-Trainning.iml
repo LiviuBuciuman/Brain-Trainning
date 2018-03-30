@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
+  <component name="CompassSettings">
+    <option name="compassExecutableFilePath" value="C:\Users\lbuci\AppData\Roaming\npm\node_modules\compass\lib\compass.js" />
+  </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-3.1.0" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="popper" level="application" />
+    <orderEntry type="module-library">
+      <library name="PHP" type="php">
+        <CLASSES>
+          <root url="file://$USER_HOME$/AppData/Roaming/Composer/vendor/composer" />
+          <root url="file://$USER_HOME$/AppData/Roaming/Composer/vendor/squizlabs/php_codesniffer" />
+          <root url="file://$MODULE_DIR$/../../bin/php/php7.1.9" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$USER_HOME$/AppData/Roaming/Composer/vendor/composer" />
+          <root url="file://$USER_HOME$/AppData/Roaming/Composer/vendor/squizlabs/php_codesniffer" />
+          <root url="file://$MODULE_DIR$/../../bin/php/php7.1.9" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/vendor/symfony/dependency-injection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/pharcommand.phar/" />
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-3.0.3.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/vendor/symfony/dependency-injection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/pharcommand.phar/" />
+          <root url="phar://$MODULE_DIR$/../../bin/php/php7.1.9/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-3.0.3.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="jquery-3.1.0" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
     <orderEntry type="library" name="popper" level="application" />

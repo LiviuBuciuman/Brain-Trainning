@@ -1,76 +1,24 @@
-$(function () {
 
-    $('#dialogLogin').dialog({
-        autoOpen: false,
-        show: {
-            effect: 'blind',
-            duration: 1000
-        },
-        hide: {
-            effect: 'drop',
-            duration: 1000
-        },
-        modal: true,
-        buttons: {
-            Login: function () {
-                login();
-            },
-            Salir: function () {
-                $(this).dialog('close');
-            }
-        }
-
-    });
-
-    $('#dialogReg').dialog({
-        autoOpen: false,
-        show: {
-            effect: 'blind',
-            duration: 1000
-        },
-        hide: {
-            effect: 'drop',
-            duration: 1000
-        },
-        modal: true,
-        buttons: {
-            "Guardar datos": function () {
-
-            },
-            Salir: function () {
-                $(this).dialog('close');
-            }
-        }
-    });
-
-    $('#openLogin').click(function () {
-        $('#dialogLogin').dialog('open');
-    });
-
-    $('#openReg').click(function () {
-        $('#dialogReg').dialog('open');
-        paises();
-    });
-
-    $('#paisReg').change(function () {
-        var codePais = $('#paisReg').val();
-        ciudades(codePais);
-    });
-});
-
+// Insertar usuario en la base de datos
 var insertUsuario = function () {
     var nombre = $('#nombreReg').val();
     var pass = $('#passwordReg').val();
     var email = $('#emailReg').val();
     var nacimiento = $('#nacimientoReg').val();
-    var pais = $('#paisReg').val();
     var ciudad = $('#poblacionReg').val();
 
     $.ajax({
-
-    })
+        url: './php/dbInsertUsuario.php',
+        data: {nombre: nombre, pass: pass, email: email, nacimiento: nacimiento, ciudad: ciudad},
+        success: function (data) {
+        },
+        error: function (request, errorType, errorMessage) {
+            alert('Error' + errorType + 'Mensaje: ' + errorMessage);
+        }
+    });
 };
 
+// Comprobar que existe el usuario en la base de datos
 var login = function () {
 
     var nombreLog = $('#nombreLog').val();
@@ -98,6 +46,7 @@ var login = function () {
     }
 };
 
+// Devuelve la lista de los paises
 var paises = function () {
     $.ajax({
         url: './php/dbSelectPaises.php',
@@ -116,6 +65,7 @@ var paises = function () {
     })
 };
 
+// Devuelve la lista de las ciudades en función del pais seleccionado
 var ciudades = function (codePais) {
     $('#poblacionReg').text("");
     $.ajax({
@@ -124,9 +74,9 @@ var ciudades = function (codePais) {
         contentType: 'application/json; charset=utf-8',
         data: {codigoPais: codePais},
         success: function (response) {
-            var array = response;
-            for (var i = 0; i < array.length; i++) {
-                var idCiudad = "<option value='" + array[i].ID + "'>" + array[i].Name + "</option>";
+            var arrayCiudades = response;
+            for (var i = 0; i < arrayCiudades.length; i++) {
+                var idCiudad = "<option value='" + arrayCiudades[i].ID + "'>" + arrayCiudades[i].Name + "</option>";
                 $('#poblacionReg').append(idCiudad);
             }
         },
@@ -135,3 +85,4 @@ var ciudades = function (codePais) {
         }
     })
 };
+

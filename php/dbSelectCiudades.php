@@ -9,7 +9,7 @@ function listaCiudades($code)
     global $enlace;
     mysqli_set_charset($enlace, 'utf8');
 
-    $result = mysqli_query($enlace, "SELECT Name FROM city WHERE CountryCode = '$code' ORDER BY name ASC ");
+    $result = mysqli_query($enlace, "SELECT ID, Name FROM city WHERE CountryCode = '$code' ORDER BY name ASC ");
     $lista = [];
     while ($fila = mysqli_fetch_array($result)) {
         $lista[] = $fila;

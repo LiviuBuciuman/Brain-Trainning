@@ -6,189 +6,370 @@
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <schema id="3" parent="1" name="agenda"/>
-    <schema id="4" parent="1" name="almacen"/>
-    <schema id="5" parent="1" name="aplicacion"/>
-    <schema id="6" parent="1" name="biblioteca"/>
-    <schema id="7" parent="1" name="chatajax"/>
-    <schema id="8" parent="1" name="examen"/>
-    <schema id="9" parent="1" name="information_schema"/>
-    <schema id="10" parent="1" name="jardineria"/>
-    <schema id="11" parent="1" name="mysql"/>
-    <schema id="12" parent="1" name="performance_schema"/>
-    <schema id="13" parent="1" name="phpmyadmin"/>
-    <schema id="14" parent="1" name="proyecto_encriptacion"/>
-    <schema id="15" parent="1" name="sf"/>
-    <schema id="16" parent="1" name="test"/>
-    <schema id="17" parent="1" name="wordpress"/>
-    <table id="18" parent="2" name="city"/>
-    <table id="19" parent="2" name="country"/>
-    <table id="20" parent="2" name="countrylanguage"/>
-    <column id="21" parent="18" name="ID">
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="aparecer"/>
+    <table id="8" parent="2" name="city"/>
+    <table id="9" parent="2" name="country"/>
+    <table id="10" parent="2" name="countrylanguage"/>
+    <table id="11" parent="2" name="partida"/>
+    <table id="12" parent="2" name="pregunta"/>
+    <table id="13" parent="2" name="tema"/>
+    <table id="14" parent="2" name="usuario"/>
+    <column id="15" parent="7" name="idPregunta">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="7" name="idPartida">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="7" name="idUsuario">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="18" parent="7" name="idPartida">
+      <ColNames>idPartida</ColNames>
+    </index>
+    <index id="19" parent="7" name="idUsuario">
+      <ColNames>idUsuario</ColNames>
+    </index>
+    <key id="20" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idPregunta
+idPartida</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="21" parent="7" name="aparecer_ibfk_2">
+      <ColNames>idPregunta</ColNames>
+      <RefSchemaName>braintrainning</RefSchemaName>
+      <RefTableName>pregunta</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="22" parent="7" name="aparecer_ibfk_1">
+      <ColNames>idPartida</ColNames>
+      <RefSchemaName>braintrainning</RefSchemaName>
+      <RefTableName>partida</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="23" parent="7" name="aparecer_ibfk_3">
+      <ColNames>idUsuario</ColNames>
+      <RefSchemaName>braintrainning</RefSchemaName>
+      <RefTableName>usuario</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="24" parent="8" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="22" parent="18" name="Name">
+    <column id="25" parent="8" name="Name">
       <Position>2</Position>
       <DataType>char(35)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="23" parent="18" name="CountryCode">
+    <column id="26" parent="8" name="CountryCode">
       <Position>3</Position>
       <DataType>char(3)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="24" parent="18" name="District">
+    <column id="27" parent="8" name="District">
       <Position>4</Position>
       <DataType>char(20)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="25" parent="18" name="Population">
+    <column id="28" parent="8" name="Population">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <index id="26" parent="18" name="CountryCode">
+    <index id="29" parent="8" name="CountryCode">
       <ColNames>CountryCode</ColNames>
     </index>
-    <key id="27" parent="18" name="PRIMARY">
+    <key id="30" parent="8" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="28" parent="18" name="city_ibfk_1">
+    <foreign-key id="31" parent="8" name="city_ibfk_1">
       <ColNames>CountryCode</ColNames>
       <RefSchemaName>braintrainning</RefSchemaName>
       <RefTableName>country</RefTableName>
       <RefColNames>Code</RefColNames>
     </foreign-key>
-    <column id="29" parent="19" name="Code">
+    <column id="32" parent="9" name="Code">
       <Position>1</Position>
       <DataType>char(3)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="30" parent="19" name="Name">
+    <column id="33" parent="9" name="Name">
       <Position>2</Position>
       <DataType>char(52)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="31" parent="19" name="Continent">
+    <column id="34" parent="9" name="Continent">
       <Position>3</Position>
       <DataType>enum(&apos;Asia&apos;, &apos;Europe&apos;, &apos;North America&apos;, &apos;Africa&apos;, &apos;Oceania&apos;, &apos;Antarctica&apos;, &apos;South America&apos;)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;Asia&apos;</DefaultExpression>
     </column>
-    <column id="32" parent="19" name="Region">
+    <column id="35" parent="9" name="Region">
       <Position>4</Position>
       <DataType>char(26)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="33" parent="19" name="SurfaceArea">
+    <column id="36" parent="9" name="SurfaceArea">
       <Position>5</Position>
       <DataType>float(10,2)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0.00&apos;</DefaultExpression>
     </column>
-    <column id="34" parent="19" name="IndepYear">
+    <column id="37" parent="9" name="IndepYear">
       <Position>6</Position>
       <DataType>smallint(6)|0</DataType>
     </column>
-    <column id="35" parent="19" name="Population">
+    <column id="38" parent="9" name="Population">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="36" parent="19" name="LifeExpectancy">
+    <column id="39" parent="9" name="LifeExpectancy">
       <Position>8</Position>
       <DataType>float(3,1)|0</DataType>
     </column>
-    <column id="37" parent="19" name="GNP">
+    <column id="40" parent="9" name="GNP">
       <Position>9</Position>
       <DataType>float(10,2)|0</DataType>
     </column>
-    <column id="38" parent="19" name="GNPOld">
+    <column id="41" parent="9" name="GNPOld">
       <Position>10</Position>
       <DataType>float(10,2)|0</DataType>
     </column>
-    <column id="39" parent="19" name="LocalName">
+    <column id="42" parent="9" name="LocalName">
       <Position>11</Position>
       <DataType>char(45)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="40" parent="19" name="GovernmentForm">
+    <column id="43" parent="9" name="GovernmentForm">
       <Position>12</Position>
       <DataType>char(45)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="41" parent="19" name="HeadOfState">
+    <column id="44" parent="9" name="HeadOfState">
       <Position>13</Position>
       <DataType>char(60)|0</DataType>
     </column>
-    <column id="42" parent="19" name="Capital">
+    <column id="45" parent="9" name="Capital">
       <Position>14</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="43" parent="19" name="Code2">
+    <column id="46" parent="9" name="Code2">
       <Position>15</Position>
       <DataType>char(2)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <key id="44" parent="19" name="PRIMARY">
+    <key id="47" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Code</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="45" parent="20" name="CountryCode">
+    <column id="48" parent="10" name="CountryCode">
       <Position>1</Position>
       <DataType>char(3)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="46" parent="20" name="Language">
+    <column id="49" parent="10" name="Language">
       <Position>2</Position>
       <DataType>char(30)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="47" parent="20" name="IsOfficial">
+    <column id="50" parent="10" name="IsOfficial">
       <Position>3</Position>
       <DataType>enum(&apos;T&apos;, &apos;F&apos;)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;F&apos;</DefaultExpression>
     </column>
-    <column id="48" parent="20" name="Percentage">
+    <column id="51" parent="10" name="Percentage">
       <Position>4</Position>
       <DataType>float(4,1)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0.0&apos;</DefaultExpression>
     </column>
-    <index id="49" parent="20" name="CountryCode">
+    <index id="52" parent="10" name="CountryCode">
       <ColNames>CountryCode</ColNames>
     </index>
-    <key id="50" parent="20" name="PRIMARY">
+    <key id="53" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>CountryCode
 Language</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="51" parent="20" name="countryLanguage_ibfk_1">
+    <foreign-key id="54" parent="10" name="countryLanguage_ibfk_1">
       <ColNames>CountryCode</ColNames>
       <RefSchemaName>braintrainning</RefSchemaName>
       <RefTableName>country</RefTableName>
       <RefColNames>Code</RefColNames>
+    </foreign-key>
+    <column id="55" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="11" name="fecha">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="11" name="edad">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="58" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="59" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="60" parent="12" name="enunciado">
+      <Position>2</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="12" name="respuesta1">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="12" name="respuesta2">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="12" name="respuesta3">
+      <Position>5</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="12" name="respuesta4">
+      <Position>6</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="12" name="respCorrecta">
+      <Position>7</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="12" name="idTema">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="67" parent="12" name="idTema">
+      <ColNames>idTema</ColNames>
+    </index>
+    <key id="68" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="69" parent="12" name="pregunta_ibfk_1">
+      <ColNames>idTema</ColNames>
+      <RefSchemaName>braintrainning</RefSchemaName>
+      <RefTableName>tema</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="70" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="13" name="nombre">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="72" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="73" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="14" name="username">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="14" name="password">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="76" parent="14" name="rol">
+      <Position>4</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="14" name="email">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="14" name="fechaNacimiento">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="14" name="idCiudad">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="80" parent="14" name="idCiudad">
+      <ColNames>idCiudad</ColNames>
+    </index>
+    <key id="81" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="82" parent="14" name="usuario_ibfk_1">
+      <ColNames>idCiudad</ColNames>
+      <RefSchemaName>braintrainning</RefSchemaName>
+      <RefTableName>city</RefTableName>
+      <RefColNames>ID</RefColNames>
     </foreign-key>
   </database-model>
 </dataSource>
