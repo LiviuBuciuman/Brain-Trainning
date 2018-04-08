@@ -9,3 +9,5 @@ if (!$enlace) {
     echo "errno de depuración: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
+
+

@@ -1,5 +1,4 @@
 $(function () {
-
     $('.alert').hide();
 
     var nombreReg = $('#nombreReg');
@@ -14,7 +13,6 @@ $(function () {
     var emailError = $('#emailError');
     var nacimientoError = $('#nacimientoError');
     var paisError = $('#paisError');
-    var ciudadError = $('#ciudadError');
 
     nombreReg.focusout(function () {
         validarNombre();
@@ -98,7 +96,6 @@ $(function () {
         modal: true,
         buttons: {
             "Guardar datos": function () {
-                validaciones();
                 insertUsuario();
             },
             Salir: function () {
